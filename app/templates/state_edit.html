@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State Edit</title>
+</head>
+ 
+<body>
+
+    <form action="/edit_state/{{state.pk }}/" method="POST">
+    {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Save" >
+    </form>
+
+</body>
+</html>

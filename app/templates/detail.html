@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <style>
+            body{font-size:20px;
+             color:rgb(0,255,255);
+             background-color:rgb(0,0,0)       
+            }
+    </style>
+</head>
+<body>
+<div style="color: rgb(255,255,0); 
+            text-align: center; ">
+        State:{{state.name}} <br>
+        State Abbrev:{{state.abbreviation}}  <br>
+        Capital: {{state.statecapital}} <br> <br>
+</div>  <div align="center">
+        {%for city in cities%}
+        city:{{city}}<br>
+        longitude:{{city.longitude}}<br>
+        latitude:{{city.latitude}}<br> 
+        county : {{city.latitude}}<br> <br>
+    {%endfor%}
+    
+        </div>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seacrh with post</title>
+</head>
+<body>
+<form action="/city_search_post/" method="POST">
+    {% csrf_token %}
+
+ State: {{ form.state }}
+
+    <br> <br>
+
+ City: {{form.city}}
+<input type="submit" value="Search">
+
+</form>
+
+    {{form.errors}}
+ {% for city in cities %}
+     {{city.name}}|{{city.zipcode}}
+     <br>
+ {% endfor %}
+
+ 
+
+
+</body>
+</html>

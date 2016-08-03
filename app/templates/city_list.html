@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+<link rel="icon" href="{% static 'img/american_flag.png' %}" type="image/png" sizes="16x16">
+
+   {% block content%}
+    <div class="container">
+    <style>
+         form {text-align: center; 
+              
+        } 
+        #input-search{
+                background-color: #E25200;
+        }
+        #input-search:hover {
+                background-color: #E22A00;
+
+            }   
+        #state{
+            width:100%;
+            height:40px;
+            background-color: #f9f9f9;
+            padding: 14px 20px;
+        }     
+    </style>
+    
+
+       <form action="/city_list/" method="GET">
+
+             <input style="width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        display: inline-block;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        box-sizing: border-box;"
+                        type="text" name="city"  placeholder=" Search Cities"  >
+            <br> <br> 
+                    <select  id="state" name="state">
+                          <option value="-1">All states</option>
+                    {%for state in  states%}
+                          <option value="{{state.pk}}">{{state}}</option>
+                    {% endfor%}
+                    </select>
+            <input id="input-search" 
+                        style="width: 100%;
+                        color: white;
+                        padding: 14px 20px;
+                        margin: 8px 0;
+                        border: none;
+                        cursor: pointer; 
+                         "
+                    type="submit" value="Search">
+       </form> 
+        
+        {% for city in cities %}
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    
+                    <h2 class="intro-text text-center">
+
+                    <a href="/city_detail/{{city.pk}}/"> {{city.name}}</a><br>
+
+                    <small>{{city.state}}</small>
+                    {% if user.is_authenticated %}
+                      <small>| <a href="/edit_city/{{ city.pk }}">Edit</a></small>
+                      <small>| <a href="/delete_city/{{ city.pk }}">Edit</a></small>
+                    {% endif %}
+      
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}      
